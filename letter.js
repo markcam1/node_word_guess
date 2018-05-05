@@ -16,15 +16,16 @@ updating the stored boolean value to true if it was guessed correctly
 
 // var numBlanks = 7;
 // var lettersInChosenWord = [];
-var blanksAndSuccesses = [];
 // var myWord = "abcdefg"
 // lettersInChosenWord = myWord.split("");
 // numBlanks = lettersInChosenWord.length;
 
 var Letter = function(chosenWord, numBlanks, character) {
+    
     this.character = character
     this.letterInWord = false;
     this.sendCorrectChar = function(chosenWord, numBlanks, character) {
+        var blanksAndSuccesses = [];
         for (var i = 0; i < numBlanks; i++) {
             blanksAndSuccesses.push("_");
         }
@@ -34,21 +35,22 @@ var Letter = function(chosenWord, numBlanks, character) {
                 blanksAndSuccesses[j] = character;
               }
             }
-            console.log("true maker");
+            console.log("\nLETTER-----------");
             console.log(blanksAndSuccesses);
+            return blanksAndSuccesses;
         }
     };
     this.checkWord = function(chosenWord, numBlanks, character) {
         for (var i = 0; i < numBlanks; i++) {
             if (chosenWord[i] === character) {
-              this.letterInWord = true;
-              
-              //return this.letterInWord;
 
-              console.log(chosenWord)
-              console.log(character)
-              console.log(this.letterInWord)
-              console.log("\n__________________")
+                this.letterInWord = true;
+                
+                // console.log(chosenWord)
+                // console.log(character)
+                // console.log(this.letterInWord)
+                // console.log("\n__________________")
+                return this.letterInWord;
             }
         } 
     };

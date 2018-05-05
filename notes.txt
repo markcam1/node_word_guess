@@ -1,2 +1,4 @@
-pulling word into index
-download inquirer
+var res = str.toLowerCase();
+
+
+

@@ -26,15 +26,23 @@ var Word = function(wordArray) {
 
     this.wordArray = wordArray;
     this.displayWord = function(character) {
-        CurrentLetter.sendCorrectChar(this.wordArray, numBlanks, character );
+        //CurrentLetter.sendCorrectChar(this.wordArray, numBlanks, character );
+        
+        var showAll = CurrentLetter.sendCorrectChar(this.wordArray, numBlanks, character );
+        return showAll;
     };
 
     this.checkLetter = function(character) {
-        CurrentLetter.checkWord(this.wordArray, numBlanks, character);
-        //var passCheck = CurrentLetter.checkWord(this.wordArray, numBlanks, character);
-        //return passCheck;
+        //CurrentLetter.checkWord(this.wordArray, numBlanks, character);
+        var passCheck = CurrentLetter.checkWord(this.wordArray, numBlanks, character);
+        //console.log("passchecker " + passCheck)
+        return passCheck;
+
     };
 };
+
+module.exports = Word;
+
 
 // WORKING TEST
 // var myWord = new Word(choosenWord);
