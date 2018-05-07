@@ -1,4 +1,21 @@
+
+blanksAndSuccesses
++++++++++++
+
 var res = str.toLowerCase();
++++++++++++
 
+make sure only one letter added - validate
 
++++++++++++
 
+1. space btw underscore on intial run
+2. use this logic for winner: maybe pull out of the inquirer/answer function, maybe in WORD.js
+
+  // If we have gotten all the letters to match the solution...
+  if (lettersInChosenWord.toString() === blanksAndSuccesses.toString()) {
+    // ..add to the win counter & give the user an alert.
+    winCounter++;
+    alert("You win!");
+
++++++++++++

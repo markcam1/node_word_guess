@@ -25,17 +25,34 @@ var Word = function(wordArray) {
     var numBlanks = wordArray.length;
 
     this.wordArray = wordArray;
+    this.wordLoader = () => {
+        CurrentLetter.firstrun(numBlanks)
+        console.log("wordloader ---- word");
+        console.log(numBlanks);
+        console.log("wordloader ---- word");
+    } ;
     this.displayWord = function(character) {
         //CurrentLetter.sendCorrectChar(this.wordArray, numBlanks, character );
         
         var showAll = CurrentLetter.sendCorrectChar(this.wordArray, numBlanks, character );
+        console.log("\nWORD____________")
+        console.log(wordArray)
+        console.log("___________WORD")
+        // console.log(showAll)
+        // console.log("WORD____________")
         return showAll;
     };
 
     this.checkLetter = function(character) {
         //CurrentLetter.checkWord(this.wordArray, numBlanks, character);
+        console.log("word " + character)
         var passCheck = CurrentLetter.checkWord(this.wordArray, numBlanks, character);
-        //console.log("passchecker " + passCheck)
+        if (typeof(passCheck) == 'undefined') {
+            
+            passCheck = false;
+            console.log("passchecker: UNDEFINED ______")
+          }
+        console.log("passchecker: " + passCheck)
         return passCheck;
 
     };
