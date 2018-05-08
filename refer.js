@@ -161,3 +161,13 @@ document.onkeyup = function(event) {
   // Runs the code after each round is done.
   roundComplete();
 };
+
+
+
+age > 18 ? (
+  alert('OK, you can go.'),
+  location.assign('continue.html')
+) : (
+  stop = true,
+  alert('Sorry, you are much too young!')
+);

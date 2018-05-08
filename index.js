@@ -39,6 +39,7 @@ var blanksAndSuccesses = [];
 // var winCounter = 0;
 // var lossCounter = 0;
 // var numGuesses = 9;
+var newGame = false;
 
 
 
@@ -48,6 +49,7 @@ function startGame() {
 
     // Reset the guesses back to 0.
     numGuesses = 3;
+    newGame = false;
     // Solution is chosen randomly from wordList.
     chosenWord = wordsList[Math.floor(Math.random() * wordsList.length)];
     // The word is broken into individual letters.
@@ -59,72 +61,55 @@ function startGame() {
       blanksAndSuccesses.push("_");
     }
     intialDisplayString = blanksAndSuccesses.toString();
-    firstDisplayString = intialDisplayString.replace(/\"/g, " ").replace(/[\[\]']+/g,'');
+    firstDisplayString = intialDisplayString.replace(/_/g, " _ ") //.replace(/[\[\]']+/g,'');
 
-    console.log("startGame_____");
+    console.log("startGame (-)");
     console.log(chosenWord);
-    // console.log(numToWin);
-    // console.log("_______________");
-    // console.log(firstDisplayString);
-    // console.log("_______________");
-    // CRITICAL LINE - Here we *reset* the guess and success array at each round.
-    //blanksAndSuccesses = [];
-    // CRITICAL LINE - Here we *reset* the wrong guesses from the previous round.
-    //wrongGuesses = [];
-    //askQuestion();
+
+    console.log(firstDisplayString);
+
     CurrentWord = new Word(chosenWord);
     CurrentWord.wordLoader();
     askQuestion();
   }
 
-  function fff (){
 
-
+const inputReview = value => {
+  if (/[A-z]/.test(value)) {
+    return true;
   }
-
-// variable we will use to count how many times our questions have been asked
-//var count = 0;
-//var CurrentWord = new Word(chosenWord);
-//var CurrentWord = new Word();
+  return 'You must enter a Alphabetic letter from A-a to Z-z';
+};
 
 var askQuestion = function() {
-
-  
-  
   //CurrentWord = new Word(chosenWord);
   // if statement to ensure that our questions are only asked five times
-  if (numGuesses > 0) {
+  if (numGuesses > 0 && newGame !== true) {
     
     // runs inquirer and asks the user a series of questions whose replies are
     // stored within the variable answers inside of the .then statement
     inquirer.prompt([
       {
         name: "name",
-        message: "Guess a letter"
+        message: "Guess a letter",
+        validate: inputReview
       },
     ]).then(function(answers) {
-
-      userLetter = answers.name;
-      // CurrentWord.checkLetter( userLetter )
-      // CurrentWord.displayWord( userLetter )
-      
+      userLetter = (answers.name).toLowerCase();
       var isChoiceGood = CurrentWord.checkLetter( userLetter )
       var dirtyString = JSON.stringify(CurrentWord.displayWord(userLetter));
-      var cmdString = dirtyString.replace(/\"/g, " ").replace(/[\[\]']+/g,'');
+      var finalDisplayString = dirtyString.replace(/\"/g, " ").replace(/[\[\]']+/g,'');
 
       if (!isChoiceGood){
-        // console.log("FAIL index " + isChoiceGood)
         numGuesses--;
         console.log("FAIL index " + numGuesses)
       }
       else if (isChoiceGood){
-        console.log("GOOD CHOICE index.js")
-        console.log(cmdString)
-        // console.log(chosenWord)
-        // console.log("_-_-_-_")
-        // console.log(lettersInChosenWord.toString())
-        // console.log("GOOD____________")
-        //startGame();
+        console.log("GOOD CHOICE index.js ++++++++++++");
+        console.log(finalDisplayString);
+
+        var winWordCheck = finalDisplayString.replace(/[\s,]/g, "");
+        (winWordCheck == chosenWord) ? (console.log("TRUE WINGAME"), newGame = true) : (console.log("FALSE WINGAME"));
       }
       // run the askquestion function again so as to either end the loop or ask the questions again
       askQuestion();
@@ -134,13 +119,10 @@ var askQuestion = function() {
   }
   else {
     console.log("All questions asked");
-    // console.log("START GAME");
     startGame()
   }
 };
 
-// call askquestion to run our code
 startGame();
-//askQuestion();
   
 
