@@ -18,8 +18,8 @@ Please give me your input! I want to make contributing to this project as easy a
 4. You may merge the Pull Request in once you have the sign-off of two other developers, or if you 
    do not have permission to do that, you may request the second reviewer to merge it for you.
 
-## Report bugs using Github's [issues](https://github.com/calendarapp1bootcamp/calendar_final/issues)
-We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/calendarapp1bootcamp/calendar_final/issues).
+## Report bugs using Github's [issues](https://github.com/calendarapp1bootcamp/node_word_guess/issues)
+We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/calendarapp1bootcamp/node_word_guess/issues).
 
 ## Write bug reports with detail, background, and sample code
 Check out this simple [Bug report Template](https://gist.github.com/carlo/3402842).
