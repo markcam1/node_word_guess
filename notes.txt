@@ -1,7 +1,2 @@
+need arrayof words
 
-+++++++++++
-
-  else {
-    console.log("All questions asked");
-    startGame()
-  }

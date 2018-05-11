@@ -4,15 +4,17 @@ var Letter = function(chosenWord, numBlanks, character) {
     var blanksAndSuccesses = [];
     this.character = character
     this.letterInWord = false;
-    this.firstrun = (numBlanks) => {
+    this.firstrun = (numBlanks, wordArray) => {
         blanksAndSuccesses = [];
         for (var i = 0; i < numBlanks; i++) {
-           blanksAndSuccesses.push("_");
-       };
-    //    console.log("FirstRun ---- Letter");
-    //    console.log(numBlanks);
-    //    console.log(blanksAndSuccesses);
-    //    console.log("FirstRun ---- Letter");
+            if(wordArray[i] == " "){
+              blanksAndSuccesses.push(" ");
+            }
+            else {
+              blanksAndSuccesses.push("__");
+            }
+          }
+
     }
     this.sendCorrectChar = function(chosenWord, numBlanks, character) {
         
@@ -22,16 +24,11 @@ var Letter = function(chosenWord, numBlanks, character) {
                     blanksAndSuccesses[j] = character;
                 }
             }
-            // console.log("\nLETTER-----------");
-            // console.log(blanksAndSuccesses);
-            return blanksAndSuccesses;
+            return blanksAndSuccesses.join(" ").toString();;
         }
         else {
             
-            // console.log("sendChar-Letter--else");
-            // console.log(blanksAndSuccesses);
-            // console.log("sendChar-Letter--else");
-            return blanksAndSuccesses;
+            return blanksAndSuccesses.join(" ").toString();;
         }
     };
     this.checkWord = function(chosenWord, numBlanks, character) {
@@ -41,19 +38,10 @@ var Letter = function(chosenWord, numBlanks, character) {
 
                 this.letterInWord = true;
                 
-                // console.log("LETTER------checkword")
-                // console.log(chosenWord)
-                // console.log(character)
-                //console.log(this.letterInWord)
-                // console.log("\n__________________")
                 return this.letterInWord;
             }
         } 
     };
   };
 
-module.exports = Letter;
-
-//console.log("\nletter file");
-
-  
+module.exports = Letter;  
